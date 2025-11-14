@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movieflix - Under Construction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #000;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        /* Advanced Cyberpunk Background */
+        .bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 0, 120, 0.05) 0%, transparent 50%);
+        }
+        
+        /* Advanced Grid System */
+        .grid-system {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(255, 0, 255, 0.02) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(255, 0, 255, 0.02) 2px, transparent 2px);
+            background-size: 40px 40px, 40px 40px, 80px 80px, 80px 80px;
+            z-index: -1;
+            animation: grid-move 20s linear infinite;
+        }
+        
+        @keyframes grid-move {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(40px, 40px);
+            }
+        }
+        
+        /* Neon Light Beams */
+        .light-beam {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 255, 255, 0.8), transparent);
+            filter: blur(1px);
+            z-index: -1;
+            animation: beam-pulse 4s ease-in-out infinite;
+        }
+        
+        .beam1 {
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .beam2 {
+            left: 30%;
+            animation-delay: 1s;
+            background: linear-gradient(to bottom, transparent, rgba(255, 0, 255, 0.8), transparent);
+        }
+        
+        .beam3 {
+            left: 50%;
+            animation-delay: 2s;
+        }
+        
+        .beam4 {
+            left: 70%;
+            animation-delay: 3s;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 0, 0.8), transparent);
+        }
+        
+        .beam5 {
+            left: 90%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes beam-pulse {
+            0%, 100% {
+                opacity: 0.3;
+                height: 80%;
+            }
+            50% {
+                opacity: 0.8;
+                height: 100%;
+            }
+        }
+        
+        /* Particle System */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(0, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            animation: float-up 15s linear infinite;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Main Container */
+        .container {
+            text-align: center;
+            z-index: 1;
+            padding: 20px;
+            position: relative;
+            max-width: 900px;
+        }
+        
+        /* 3D Logo Effect */
+        .logo-container {
+            perspective: 1000px;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 120px;
+            font-weight: 900;
+            position: relative;
+            display: inline-block;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            transform-style: preserve-3d;
+            animation: logo-3d 8s ease-in-out infinite;
+            text-shadow: 
+                0 1px 0 #ccc,
+                0 2px 0 #c9c9c9,
+                0 3px 0 #bbb,
+                0 4px 0 #b9b9b9,
+                0 5px 0 #aaa,
+                0 6px 1px rgba(0,0,0,.1),
+                0 0 5px rgba(0,0,0,.1),
+                0 1px 3px rgba(0,0,0,.3),
+                0 3px 5px rgba(0,0,0,.2),
+                0 5px 10px rgba(0,0,0,.25);
+        }
+        
+        @keyframes logo-3d {
+            0%, 100% {
+                transform: rotateX(0) rotateY(0) rotateZ(0);
+            }
+            25% {
+                transform: rotateX(10deg) rotateY(10deg) rotateZ(0);
+            }
+            50% {
+                transform: rotateX(0) rotateY(20deg) rotateZ(0);
+            }
+            75% {
+                transform: rotateX(-10deg) rotateY(10deg) rotateZ(0);
+            }
+        }
+        
+        /* Advanced Glitch Effect */
+        .logo::before,
+        .logo::after {
+            content: "MOVIEFLIX";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .logo::before {
+            animation: glitch-1 0.3s infinite;
+            color: #ff00ff;
+            z-index: -1;
+            mix-blend-mode: screen;
+        }
+        
+        .logo::after {
+            animation: glitch-2 0.3s infinite;
+            color: #00ffff;
+            z-index: -2;
+            mix-blend-mode: screen;
+        }
+        
+        @keyframes glitch-1 {
+            0%, 100% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                transform: translate(0);
+            }
+            20% {
+                clip-path: polygon(0 15%, 100% 15%, 100% 85%, 0 85%);
+                transform: translate(-5px, 0);
+            }
+            40% {
+                clip-path: polygon(0 30%, 100% 30%, 100% 70%, 0 70%);
+                transform: translate(5px, 0);
+            }
+            60% {
+                clip-path: polygon(0 10%, 100% 10%, 100% 90%, 0 90%);
+                transform: translate(-5px, 0);
+            }
+            80% {
+                clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+                transform: translate(5px, 0);
+            }
+        }
+        
+        @keyframes glitch-2 {
+            0%, 100% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                transform: translate(0);
+            }
+            20% {
+                clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+                transform: translate(5px, 0);
+            }
+            40% {
+                clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+                transform: translate(-5px, 0);
+            }
+            60% {
+                clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+                transform: translate(5px, 0);
+            }
+            80% {
+                clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+                transform: translate(-5px, 0);
+            }
+        }
+        
+        /* Holographic Subtitle */
+        .subtitle-container {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .subtitle {
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .subtitle-text {
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
+            background-size: 300% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 4s linear infinite, holographic-flicker 3s infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes shine {
+            to {
+                background-position: 300% center;
+            }
+        }
+        
+        @keyframes holographic-flicker {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            92% {
+                opacity: 1;
+            }
+            93% {
+                opacity: 0.4;
+            }
+            94% {
+                opacity: 1;
+            }
+            95% {
+                opacity: 0.6;
+            }
+            96% {
+                opacity: 1;
+            }
+        }
+        
+        /* Holographic Projection Effect */
+        .hologram-effect {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(0, 255, 255, 0.1) 50%, 
+                transparent 70%);
+            background-size: 200% 200%;
+            animation: hologram-scan 3s linear infinite;
+            z-index: 0;
+            border-radius: 10px;
+        }
+        
+        @keyframes hologram-scan {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 200% 200%;
+            }
+        }
+        
+        /* Advanced Progress System */
+        .progress-system {
+            margin: 50px 0;
+            position: relative;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 
+                inset 0 0 10px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(0, 255, 255, 0.2);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+            border-radius: 6px;
+            position: relative;
+            animation: progress 6s ease-in-out infinite;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.8),
+                inset 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.4), 
+                transparent);
+            animation: scan-line 2s linear infinite;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.3) 0%, 
+                transparent 70%);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes progress {
+            0% {
+                width: 0%;
+            }
+            50% {
+                width: 80%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+        
+        @keyframes scan-line {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        /* Progress Indicators */
+        .progress-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 255, 255, 0.5);
+            animation: indicator-pulse 2s ease-in-out infinite;
+        }
+        
+        .indicator-dot:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .indicator-dot:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        @keyframes indicator-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 1;
+            }
+        }
+        
+        /* Advanced Loader */
+        .loader-container {
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .loader-ring {
+            width: 60px;
+            height: 60px;
+            border: 3px solid transparent;
+            border-top-color: #ff00ff;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+            position: relative;
+        }
+        
+        .loader-ring:nth-child(2) {
+            width: 50px;
+            height: 50px;
+            border-top-color: #00ffff;
+            animation-duration: 1.2s;
+            animation-direction: reverse;
+        }
+        
+        .loader-ring:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            border-top-color: #ffff00;
+            animation-duration: 0.9s;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(0, 255, 255, 0.6);
+            animation: float-random 15s ease-in-out infinite;
+        }
+        
+        .element1 {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+            color: rgba(255, 0, 255, 0.6);
+        }
+        
+        .element2 {
+            top: 70%;
+            right: 15%;
+            animation-delay: 2s;
+            color: rgba(0, 255, 255, 0.6);
+        }
+        
+        .element3 {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+            color: rgba(255, 255, 0, 0.6);
+        }
+        
+        .element4 {
+            top: 40%;
+            right: 25%;
+            animation-delay: 6s;
+            color: rgba(0, 255, 0, 0.6);
+        }
+        
+        @keyframes float-random {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-15px, 20px) rotate(180deg);
+            }
+            75% {
+                transform: translate(30px, 10px) rotate(270deg);
+            }
+        }
+        
+        /* Status Text */
+        .status-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .status-text::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            animation: line-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes line-pulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scaleX(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 70px;
+                letter-spacing: 4px;
+            }
+            
+            .subtitle {
+                font-size: 1.6rem;
+                letter-spacing: 2px;
+            }
+            
+            .loader-ring {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .loader-ring:nth-child(2) {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .loader-ring:nth-child(3) {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .status-text {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 50px;
+                letter-spacing: 2px;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+            }
+            
+            .loader-ring {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .loader-ring:nth-child(2) {
+                width: 25px;
+                height: 25px;
+            }
+            
+            .loader-ring:nth-child(3) {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .status-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Container -->
+    <div class="bg-container"></div>
+    
+    <!-- Grid System -->
+    <div class="grid-system"></div>
+    
+    <!-- Neon Light Beams -->
+    <div class="light-beam beam1"></div>
+    <div class="light-beam beam2"></div>
+    <div class="light-beam beam3"></div>
+    <div class="light-beam beam4"></div>
+    <div class="light-beam beam5"></div>
+    
+    <!-- Particle System -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-element element1"><i class="fas fa-film"></i></div>
+        <div class="floating-element element2"><i class="fas fa-video"></i></div>
+        <div class="floating-element element3"><i class="fas fa-tv"></i></div>
+        <div class="floating-element element4"><i class="fas fa-play-circle"></i></div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <div class="logo-container">
+            <h1 class="logo">MOVIEFLIX</h1>
+        </div>
+        
+        <div class="subtitle-container">
+            <div class="hologram-effect"></div>
+            <div class="subtitle">
+                <span class="subtitle-text">is under construction, stay tuned</span>
+            </div>
+        </div>
+        
+        <div class="progress-system">
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="progress-indicators">
+                <div class="indicator">
+                    <div class="indicator-dot"></div>
+                    <span>INITIALIZING</span>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-dot"></div>
+                    <span>LOADING</span>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-dot"></div>
+                    <span>COMPLETE</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="loader-container">
+            <div class="loader">
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+            </div>
+        </div>
+        
+        <div class="status-text">SYSTEM INITIALIZING...</div>
+    </div>
+    
+    <script>
+        // Particle System
+        document.addEventListener('DOMContentLoaded', () => {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random color
+                const colors = ['rgba(0, 255, 255, 0.8)', 'rgba(255, 0, 255, 0.8)', 'rgba(255, 255, 0, 0.8)', 'rgba(0, 255, 0, 0.8)'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.boxShadow = `0 0 10px ${particle.style.background}`;
+                
+                // Random animation duration
+                particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Interactive progress bar
+            const progressBar = document.querySelector('.progress-bar');
+            progressBar.addEventListener('click', () => {
+                progressBar.style.animation = 'none';
+                setTimeout(() => {
+                    progressBar.style.animation = 'progress 6s ease-in-out infinite';
+                }, 10);
+            });
+            
+            // Add hover effect to floating elements
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    element.style.transform = 'scale(1.5) rotate(180deg)';
+                    element.style.transition = 'transform 0.5s';
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    element.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+            
+            // Dynamic status text change
+            const statusText = document.querySelector('.status-text');
+            const statusMessages = [
+                'SYSTEM INITIALIZING...',
+                'LOADING ASSETS...',
+                'ESTABLISHING CONNECTION...',
+                'PREPARING INTERFACE...',
+                'ALMOST READY...'
+            ];
+            
+            let messageIndex = 0;
+            setInterval(() => {
+                messageIndex = (messageIndex + 1) % statusMessages.length;
+                statusText.style.opacity = '0';
+                
+                setTimeout(() => {
+                    statusText.textContent = statusMessages[messageIndex];
+                    statusText.style.opacity = '1';
+                }, 300);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
